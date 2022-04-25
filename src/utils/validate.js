@@ -14,7 +14,7 @@ export function isExternal(path) {
  * @returns {boolean}
  */
 export function isPassword(str) {
-  return str.length >= 6
+  return str.length >= 8
 }
 /**
  * @author chuzhixin 1204505056@qq.com （不想保留author可删除）

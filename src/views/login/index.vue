@@ -1,11 +1,5 @@
 <template>
   <div class="login-container">
-    <el-alert
-      title="beautiful boys and girls欢迎加入vue-admin-beautifulQQ群：972435319"
-      type="success"
-      :closable="false"
-      style="position: fixed"
-    ></el-alert>
     <el-row>
       <el-col :xs="24" :sm="24" :md="12" :lg="16" :xl="16">
         <div style="color: transparent">占位符</div>
@@ -64,9 +58,6 @@
           >
             登录
           </el-button>
-          <router-link to="/register">
-            <div style="margin-top: 20px">注册</div>
-          </router-link>
         </el-form>
       </el-col>
     </el-row>
@@ -86,7 +77,7 @@
       },
     },
     data() {
-      const validateusername = (rule, value, callback) => {
+      const validateUserName = (rule, value, callback) => {
         if ('' == value) {
           callback(new Error('用户名不能为空'))
         } else {
@@ -95,7 +86,7 @@
       }
       const validatePassword = (rule, value, callback) => {
         if (!isPassword(value)) {
-          callback(new Error('密码不能少于6位'))
+          callback(new Error('密码不能少于8位'))
         } else {
           callback()
         }
@@ -112,7 +103,7 @@
             {
               required: true,
               trigger: 'blur',
-              validator: validateusername,
+              validator: validateUserName,
             },
           ],
           password: [
