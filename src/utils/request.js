@@ -8,13 +8,15 @@ import {
   noPermissionCode,
   requestTimeout,
   successCode,
-  tokenName,
+  tokenSendName,
+  tokenPrefix,
   loginInterception,
 } from '@/config'
 import store from '@/store'
 import qs from 'qs'
 import router from '@/router'
 import { isArray } from '@/utils/validate'
+import errorMsg from '@/utils/errorMsg'
 
 let loadingInstance
 
@@ -53,7 +55,8 @@ const instance = axios.create({
 instance.interceptors.request.use(
   (config) => {
     if (store.getters['user/accessToken']) {
-      config.headers[tokenName] = store.getters['user/accessToken']
+      config.headers[tokenSendName] =
+        tokenPrefix + store.getters['user/accessToken']
     }
     //这里会过滤所有为空、0、false的key，如果不需要请自行注释
     if (config.data)
@@ -90,7 +93,7 @@ instance.interceptors.response.use(
     if (codeVerificationArray.includes(code)) {
       return data
     } else {
-      handleCode(code, msg)
+      handleCode(code, errorMsg[msg] || msg)
       return Promise.reject(
         'vue-admin-beautiful请求异常拦截:' +
           JSON.stringify({ url: config.url, code, msg }) || 'Error'
@@ -102,7 +105,7 @@ instance.interceptors.response.use(
     const { response, message } = error
     if (error.response && error.response.data) {
       const { status, data } = response
-      handleCode(status, data.msg || message)
+      handleCode(status, errorMsg[data.msg] || message)
       return Promise.reject(error)
     } else {
       let { message } = error

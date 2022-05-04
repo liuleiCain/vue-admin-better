@@ -17,7 +17,7 @@ const setting = {
   //简写
   abbreviation: 'vab',
   //开发环境端口号
-  devPort: '81',
+  devPort: '18001',
   //版本号
   version: process.env.VUE_APP_VERSION,
   //这一项非常重要！请务必保留MIT协议下package.json及copyright作者信息 即可免费商用，不遵守此项约定你将无法使用该框架，如需自定义版权信息请联系QQ1204505056
@@ -35,9 +35,13 @@ const setting = {
   //加载时显示文字
   loadingText: '正在加载中...',
   //token名称
-  tokenName: 'accessToken',
+  tokenName: 'access_token',
+  //token发送的名称
+  tokenSendName: 'Authorization',
+  //token前缀
+  tokenPrefix: 'Bearer ',
   //token在localStorage、sessionStorage存储的key的名称
-  tokenTableName: 'vue-admin-beautiful-2021',
+  tokenTableName: 'thinkFun-admin-2022',
   //token存储位置localStorage sessionStorage
   storage: 'localStorage',
   //token失效回退到登录页时是否记录本次的路由
@@ -49,9 +53,9 @@ const setting = {
   //是否开启登录拦截
   loginInterception: true,
   //是否开启登录RSA加密
-  loginRSA: true,
+  loginRSA: false,
   //intelligence和all两种方式，前者后端权限只控制permissions不控制view文件的import（前后端配合，减轻后端工作量），all方式完全交给后端前端只负责加载
-  authentication: 'intelligence',
+  authentication: 'all',
   //vertical布局时是否只保持一个子菜单的展开
   uniqueOpened: true,
   //vertical布局时默认展开的菜单path，使用逗号隔开建议只展开一个

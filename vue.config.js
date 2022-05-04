@@ -1,8 +1,3 @@
-/**
- * @author https://gitee.com/chu1204505056/vue-admin-better （不想保留author可删除）
- * @description cli配置
- */
-
 const path = require('path')
 const {
   publicPath,
@@ -34,10 +29,10 @@ process.env.VUE_APP_UPDATE_TIME = time
 process.env.VUE_APP_VERSION = version
 
 const resolve = (dir) => path.join(__dirname, dir)
-const mockServer = () => {
-  if (process.env.NODE_ENV === 'development') return require('./mock')
-  else return ''
-}
+// const mockServer = () => {
+//   if (process.env.NODE_ENV === 'development') return require('./mock')
+//   else return ''
+// }
 
 module.exports = {
   publicPath,
@@ -55,7 +50,7 @@ module.exports = {
       warnings: true,
       errors: true,
     },
-    after: mockServer(),
+    // after: mockServer(),
   },
   configureWebpack() {
     return {
